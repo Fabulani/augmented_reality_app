@@ -31,6 +31,13 @@ This sections documents the many problems I faced during development of this pro
 
    ![Problem: overlapping lines for rectangle identification](./docs/problem_overlapping-lines.png "Problem: overlapping lines for rectangle identification")
 
+5. Too many intersections (I only want 4: the corners of the marker)
+   - I was frequently getting 16 or more intersections. It'd detect both square corners, but also erroneously detect intersections below the corners.
+   - Fix: I increased the `min_intersection_distance` from 10 to 150. This works for the current image, but probably will cause problems in the video feed part, plus if the marker gets smaller in the source image. The previous value of 10 was used to fix overlapping intersections.
+
+   ![Problem: too many intersections](./docs/problem_too-many-intersections.png "Problem: too many intersections")
+   ![Fix: too many intersections](./docs/fix_too-many-intersections.png "Fix: too many intersections")
+
 # Discussions with ChatGPT
 
 **ME**:
