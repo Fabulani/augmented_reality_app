@@ -21,13 +21,13 @@ This sections documents the many problems I faced during development of this pro
 
 3. Polygons instead of rectangles.
    - When detecting rectangles, I was exhautively tracing every intersection and getting all possibilities. This was stored in a variable called `squares`, with each element being a list of 4 points (i.e., intersections). I couldn't figure out the proper conditions and restrictions to only return actual rectangles instead of all kinds of polygons. At first, it'd return around 5k squares, but with each iteration of new conditions and rules being added, it returned less: 4k, then 2k, then 1k, then 53, then 2, then 1, and currently none. The "best" one was with 53 squares, but after plotting them, I noticed that none of the 53 squares fit the marker properly (the big white square and the black square inside it). I basically had to start from scratch for this step of the pipeline.
-   - Fix: still trying to fix this...
+   - Fix: scratched the rectangle identification. Now I use only the intersections for the marker corner and then apply homography.
 
    ![Problem: polygons instead of rectangles](./docs/problem_polygons-instead-of-rects-2.png "Problem: polygons instead of rectangles")
 
 4. Overlapping lines for rectangle identification
    - After getting the list of "squares" (more like polygons), I'd use its lines to check if they're what I want, i.e. the marker. Many of these would have lines overlapping or crossing eachother, which doesn't make sense for a rectangle. This problem could be related to Problem 3.
-   - fix: still trying to fix this... but a partial fix was to only detect 4 lines for the polygon instead of the 6 (originally used 6 lines because those included all possibilities of connections between intersections), although I'm not sure if it did fix it since adding this condition made me find no squares.
+   - fix: scratched the rectangle identification. Now I use only the intersections for the marker corner and then apply homography.
 
    ![Problem: overlapping lines for rectangle identification](./docs/problem_overlapping-lines.png "Problem: overlapping lines for rectangle identification")
 
@@ -37,6 +37,14 @@ This sections documents the many problems I faced during development of this pro
 
    ![Problem: too many intersections](./docs/problem_too-many-intersections.png "Problem: too many intersections")
    ![Fix: too many intersections](./docs/fix_too-many-intersections.png "Fix: too many intersections")
+
+6. Homography sligthly wrong
+   - The homography calculations were resulting in a slightly wrong position. It seemed like the scale was wrong.
+   - Fix: adjusted the coordinates of the source (the 4 marker corners).
+
+   ![Problem: Homography sligthly wrong](./docs/problem_homography-wrong-scale.png "Problem: Homography sligthly wrong")
+   ![Fix: Homography sligthly wrong](./docs/fix_homography-wrong-scale.png "Fix: Homography sligthly wrong")
+
 
 # Discussions with ChatGPT
 
