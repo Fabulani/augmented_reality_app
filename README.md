@@ -1,6 +1,12 @@
 # Augmented Reality App
 
-Marker-based augmented reality app made with Python and OpenCV.
+Marker-based augmented reality app made with Python and OpenCV. Detects the marker by detecting the four rectangle corners, then renders the 3D model after applying homography.
+
+![AR App Demo](./docs/demo.gif "AR App Demo")
+
+![Result: diagonal](./docs/result_hiro-diagonal.png "Result: diagonal")
+![Result: front](./docs/result_hiro-front.png "Result: front")
+![Result: webcam](./docs/result_hiro-webcam.png "Result: webcam")
 
 # Problems and solutions
 
@@ -45,7 +51,12 @@ This sections documents the many problems I faced during development of this pro
    ![Problem: Homography sligthly wrong](./docs/problem_homography-wrong-scale.png "Problem: Homography sligthly wrong")
    ![Fix: Homography sligthly wrong](./docs/fix_homography-wrong-scale.png "Fix: Homography sligthly wrong")
 
+7. Intersection order affects homography
+   - The order of the intersection points in `intersection` affects homography, since the points from the reference image are directly mapped to the intersections. In the real-time webcam version, this causes major issues as even if the marker is correctly detected, the model will flicker and warp all over the place due to the intersection order changing.
+   - Fix: no clue, for now I've setup two distinct sets of `src_points` for the notebook images.
 
+   ![Problem: Intersection order affects homography](./docs/problem_intersection-order-affects-homography.png "Problem: Intersection order affects homography")
+   ![Problem: Intersection order affects homography 2](./docs/problem_intersection-order-affects-homography-2.png "Problem: Intersection order affects homography 2")
 
 # Credits
 
