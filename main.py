@@ -8,11 +8,9 @@ from ar_app.ar_python3_opencv4 import VideoCapture
 # ----- PARAMETERS
 OBJ_PATH = "./models/fox/fox.obj"  # Path to 3D model (.obj file)
 REFERENCE_IMG_PATH = "./img/hiro.png"  # Path to reference image (marker)
-CAMERA_PARAMETERS = np.array([  # Camera intrinsics matrix
-    [800, 0, 320], 
-    [0, 800, 240], 
-    [0, 0, 1]
-])
+CAMERA_PARAMETERS = np.array(
+    [[800, 0, 320], [0, 800, 240], [0, 0, 1]]  # Camera intrinsics matrix
+)
 SCALE3D = 1  # Scale of the 3D model
 
 
@@ -26,12 +24,12 @@ def main():
     argument = sys.argv[1]
 
     # Check if the argument is either 'marker' or 'feature'
-    if argument not in ['marker', 'feature']:
+    if argument not in ["marker", "feature"]:
         print("Invalid argument. Please enter 'marker' or 'feature'.")
         exit()
 
     # Use pipeline from selected method
-    if argument == 'marker':
+    if argument == "marker":
         from ar_app.marker.detector import pipeline
     else:
         from ar_app.feature.detector import pipeline

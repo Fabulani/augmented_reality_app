@@ -1,5 +1,7 @@
 # Augmented Reality App
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 Marker-based augmented reality app made with Python and OpenCV. Detects the marker by detecting the four rectangle corners, then renders the 3D model after applying homography.
 
 ![AR App Demo](./docs/demo.gif "AR App Demo")

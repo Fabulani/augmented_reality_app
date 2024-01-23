@@ -7,6 +7,7 @@ from ar_app.ar_python3_opencv4 import VideoCapture
 
 SCALE3D = 1  # Scale of the 3D model
 
+
 def main():
     obj = OBJ("./models/fox/fox.obj", swapyz=True)
     camera_parameters = np.array([[800, 0, 320], [0, 800, 240], [0, 0, 1]])
