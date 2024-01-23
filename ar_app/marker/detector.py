@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
-from marker_ar.objloader_simple import *
-from marker_ar.ar_python3_opencv4 import projection_matrix, render 
+from ar_app.objloader_simple import *
+from ar_app.ar_python3_opencv4 import projection_matrix, render 
+from ar_app.common import perspective_transformation, draw_polygon
 
 # Parameters
 MIN_INTERSECTION_DISTANCE = 100
@@ -57,17 +58,6 @@ def find_homography(intersections: list, reference_image_shape: tuple):
 
     homography, _ = cv2.findHomography(src_points, dst_points, cv2.RANSAC, 5.0)
     return homography
-
-
-def perspective_transformation(homography, reference_image_shape: tuple):
-    h, w = reference_image_shape
-    corners = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
-    transformed_corners = cv2.perspectiveTransform(corners, homography)
-    return transformed_corners
-
-
-def draw_polygon(image, transformed_corners):
-    return cv2.polylines(image, [np.int32(transformed_corners)], True, 255, 5, cv2.LINE_AA)
 
 
 def pipeline(reference_image, image, camera_parameters, obj, scale3d):

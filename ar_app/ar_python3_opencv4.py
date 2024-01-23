@@ -15,7 +15,7 @@ import math
 import threading
 import numpy as np
 import matplotlib.pyplot as plt
-from marker_ar.objloader_simple import *
+from ar_app.objloader_simple import *
 from collections import deque
 
 

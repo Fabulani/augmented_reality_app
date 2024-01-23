@@ -1,27 +1,16 @@
 import cv2
 import numpy as np
 from ar_app.objloader_simple import *
-from ar_app.feature.detector import pipeline
+from ar_app.marker.detector import pipeline
 from ar_app.ar_python3_opencv4 import VideoCapture
 
 
-# ----- PARAMETERS
-OBJ_PATH = "./models/fox/fox.obj"
-REFERENCE_IMG_PATH = "./img/hiro.png"
-CAMERA_PARAMETERS = np.array([
-    [800, 0, 320], 
-    [0, 800, 240], 
-    [0, 0, 1]
-])
 SCALE3D = 1  # Scale of the 3D model
-#! Change this to select which method to use: marker-based, or feature-based
-PIPELINE_FUNC = pipeline
-# TODO: use cmd args to select the pipeline function to import
 
 def main():
-    obj = OBJ(OBJ_PATH, swapyz=True)
-    camera_parameters = CAMERA_PARAMETERS
-    reference_image = cv2.imread(REFERENCE_IMG_PATH, 0)
+    obj = OBJ("./models/fox/fox.obj", swapyz=True)
+    camera_parameters = np.array([[800, 0, 320], [0, 800, 240], [0, 0, 1]])
+    reference_image = cv2.imread("./img/hiro.png", 0)
 
     # Init video capture
     cap = VideoCapture(0)
