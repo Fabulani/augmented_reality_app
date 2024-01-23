@@ -18,13 +18,14 @@
 				"ms-toolsai.vscode-jupyter-cell-tags"
 			]
 		}
-	}
+	},
 
 	// UNIX ONLY: Allow display access
-	// "containerEnv": {
-    //     "DISPLAY": "unix:0"
-    // }
-    // "mounts": [
-    //     "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
-    //   ]
+	"containerEnv": {
+        "DISPLAY": "unix:0"
+    },
+    "mounts": [
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+		"source=/dev/video0,target=/dev/video0,type=bind"
+      ]
 }
