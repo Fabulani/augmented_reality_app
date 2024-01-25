@@ -30,9 +30,9 @@ def main():
 
     # Use pipeline from selected method
     if argument == "marker":
-        from ar_app.marker.detector import pipeline
+        from ar_app.marker_detection import pipeline
     else:
-        from ar_app.feature.detector import pipeline
+        from ar_app.feature_detection import pipeline
 
     obj = OBJ(OBJ_PATH, swapyz=True)
     camera_parameters = CAMERA_PARAMETERS
