@@ -2,13 +2,26 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Marker-based augmented reality app made with Python and OpenCV. Detects the marker by detecting the four rectangle corners, then renders the 3D model after applying homography.
+Marker-based and feature-based augmented reality app made with Python and OpenCV. 
+- Marker-based: detects the marker by detecting the four rectangle corners, then renders the 3D model after applying homography.
+- Feature-based: uses feature detection and matching to identify the marker.
+
 
 ![AR App Demo](./docs/demo.gif "AR App Demo")
 
 ![Result: diagonal](./docs/result_hiro-diagonal.png "Result: diagonal")
 ![Result: front](./docs/result_hiro-front.png "Result: front")
 ![Result: webcam](./docs/result_hiro-webcam.png "Result: webcam")
+
+
+# Requirements
+- Python 3.8
+
+
+# Known issues
+- Docker doesn't have access to the webcam, so `main.py` doesn't work.
+- Marker-based AR doesn't work well. A TODO is to implemented contour-based detection using the Douglas-Pucker algorithm.
+  
 
 # Problems and solutions
 
