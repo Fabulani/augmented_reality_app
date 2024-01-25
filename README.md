@@ -73,6 +73,12 @@ This sections documents the many problems I faced during development of this pro
    ![Problem: Intersection order affects homography](./docs/problem_intersection-order-affects-homography.png "Problem: Intersection order affects homography")
    ![Problem: Intersection order affects homography 2](./docs/problem_intersection-order-affects-homography-2.png "Problem: Intersection order affects homography 2")
 
+8. Feature method doesn't work on video
+   - Feature method seems to never work. Model keeps flickering and flying all over the screen. Even the simplest of inputs doesn't work.
+
+   ![Problem: Feature detection doesn't work on video](./docs/problem_feature-matching-fail.png "Problem: Feature detection doesn't work on video")
+   
+
 # Credits
 
 Code adapted from https://github.com/mafda/augmented_reality_101
