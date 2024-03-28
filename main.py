@@ -7,7 +7,7 @@ from ar_app.ar_python3_opencv4 import VideoCapture
 
 # ----- PARAMETERS
 OBJ_PATH = "./models/fox/fox.obj"  # Path to 3D model (.obj file)
-REFERENCE_IMG_PATH = "./img/hiro.png"  # Path to reference image (marker)
+REFERENCE_IMG_PATH = "./img/me-marker.png"  # Path to reference image (marker)
 CAMERA_PARAMETERS = np.array(
     [[800, 0, 320], [0, 800, 240], [0, 0, 1]]  # Camera intrinsics matrix
 )

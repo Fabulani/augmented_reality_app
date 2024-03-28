@@ -2,17 +2,23 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Marker-based and feature-based augmented reality app made with Python and OpenCV. 
-- Marker-based: detects the marker by detecting the four rectangle corners, then renders the 3D model after applying homography.
+Marker-based augmented reality app made with Python and OpenCV. 
+- Rectangle detector: detects the marker by detecting the four rectangle corners, then renders the 3D model after applying homography.
+
+   ![AR App Demo](./docs/demo.gif "AR App Demo")   
+
+   ![Result: diagonal](./docs/result_hiro-diagonal.png "Result: diagonal")
+   ![Result: front](./docs/result_hiro-front.png "Result: front")
+   ![Result: webcam](./docs/result_hiro-webcam.png "Result: webcam")
+
 - Feature-based: uses feature detection and matching to identify the marker.
 
-
-![AR App Demo](./docs/demo.gif "AR App Demo")
-
-![Result: diagonal](./docs/result_hiro-diagonal.png "Result: diagonal")
-![Result: front](./docs/result_hiro-front.png "Result: front")
-![Result: webcam](./docs/result_hiro-webcam.png "Result: webcam")
-
+   ![Result: hiro1 matches](./docs/result_feature_hiro1-matches.png "Result: hiro1 matches")
+   ![Result: hiro1](./docs/result_feature_hiro1.png "Result: hiro1")
+   ![Result: hiro2 matches](./docs/result_feature_hiro2-matches.png "Result: hiro2 matches")
+   ![Result: hiro2](./docs/result_feature_hiro2.png "Result: hiro2")
+   ![Result: me matches](./docs/result_feature_me1-matches.png "Result: me matches")
+   ![Result: me](./docs/result_feature_me1.png "Result: me")
 
 # Requirements
 - Python 3.8
@@ -20,7 +26,7 @@ Marker-based and feature-based augmented reality app made with Python and OpenCV
 
 # Known issues
 - Docker doesn't have access to the webcam, so `main.py` doesn't work.
-- Marker-based AR doesn't work well. A TODO is to implemented contour-based detection using the Douglas-Pucker algorithm.
+- Rectangle-based AR doesn't work well. A TODO is to implemented contour-based detection using the Douglas-Pucker algorithm.
   
 
 # Problems and solutions
@@ -75,6 +81,7 @@ This sections documents the many problems I faced during development of this pro
 
 8. Feature method doesn't work on video
    - Feature method seems to never work. Model keeps flickering and flying all over the screen. Even the simplest of inputs doesn't work.
+   - Fixed this by adjusting some parameters and fixing return values of functions. Didn't test on video.
 
    ![Problem: Feature detection doesn't work on video](./docs/problem_feature-matching-fail.png "Problem: Feature detection doesn't work on video")
    
